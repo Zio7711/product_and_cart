@@ -45,7 +45,13 @@
       "space-before-blocks": "off",
       "quotes": "off",
       "no-extra-semi": "off",
-      "semi": 0
+      "semi": 0,
+      "space-before-function-paren": ["error", {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }]
+      
     }
   },
   "browserslist": [
