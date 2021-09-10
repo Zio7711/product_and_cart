@@ -10,48 +10,14 @@
       <h2>Recommended</h2>
 
       <div class="recommended">
-        <div
-          class="card"
+        <ProductCard
           v-for="(product, index) in inventory.slice(0, 3)"
           :key="product.id"
-        >
-          <div class="card-title">{{ product.name }}</div>
-          <div class="card-body">
-            <i class="icofont-10x icofont-{{ product.icon }}"></i>
-            <form>
-              <div class="row">
-                <div class="cell">
-                  <label>Type:</label>
-                </div>
-                <div class="cell">
-                  <em>{{ product.type }}</em>
-                </div>
-              </div>
-              <div class="row">
-                <div class="cell">
-                  <label>Price:</label>
-                </div>
-                <div class="cell">${{ product.price.USD }}</div>
-              </div>
-              <div class="row">
-                <div class="cell">
-                  <label>Quantity:</label>
-                </div>
-                <div class="cell">
-                  <input type="number" v-model.number="product.quantity" />
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="card-footer">
-            <button
-              @click="addToCart(product.name, index)"
-              class="btn btn-light"
-            >
-              Add to cart
-            </button>
-          </div>
-        </div>
+          class="card"
+          :index="index"
+          :product="product"
+          :addToCart="addToCart"
+        />
       </div>
     </main>
   </div>
@@ -59,11 +25,13 @@
 
 <script>
 // @ is an alias to /src
-
+import ProductCard from '@/components/ProductCard.vue';
 export default {
   name: 'Home',
-  props: ['inventory'],
+  props: ['inventory', 'addToCart'],
 
-  components: {}
+  components: {
+    ProductCard
+  }
 };
 </script>
